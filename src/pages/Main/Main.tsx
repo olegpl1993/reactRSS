@@ -7,20 +7,20 @@ class Main extends Component {
     inputValue: '',
   };
 
-  componentWilUnmount() {
+  componentWillUnmount() {
+    console.log('Save to LS');
     localStorage.setItem('inputValue', this.state.inputValue);
   }
 
   componentDidMount() {
-    this.setState(
-      localStorage.getItem('inputValue')
-        ? { inputValue: localStorage.getItem('inputValue') }
-        : { inputValue: '' }
-    );
+    console.log('Load from LS');
+    if (localStorage.getItem('inputValue')) {
+      this.setState({ inputValue: localStorage.getItem('inputValue') });
+    }
   }
 
   render() {
-    console.log(this.state.inputValue);
+    console.log('state: ', this.state.inputValue);
     return (
       <div className="main">
         <Header pageName={'Main'} />
