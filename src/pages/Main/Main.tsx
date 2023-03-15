@@ -1,6 +1,8 @@
 import './Main.css';
 import React, { Component } from 'react';
 import Header from '../Header/Header';
+import products from '../../bd';
+import Card from 'card/card';
 
 class Main extends Component {
   state = {
@@ -29,6 +31,13 @@ class Main extends Component {
           value={this.state.inputValue}
           onChange={(e) => this.setState({ inputValue: e.currentTarget.value })}
         />
+        <div className="cardBox">
+          {products.map((product) => (
+            <div className="card" key={product.id}>
+              <div className="title">{product.title}</div>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
