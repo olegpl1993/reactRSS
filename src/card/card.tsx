@@ -29,7 +29,7 @@ class Card extends React.Component<Product> {
         <div className="row">Stock: {this.props.product.stock}</div>
         <div className="row">{this.props.product.description}</div>
         <div className="imgBox">
-          <img src={this.props.product.images[0]} className="img" alt="img" />
+          <img src={this.props.product.images[0]} className="img" alt="productImg" />
         </div>
       </div>
     );

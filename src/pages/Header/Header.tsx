@@ -10,7 +10,7 @@ class Header extends Component<MyProps> {
   render() {
     return (
       <div className="header">
-        <div className="page">{this.props.pageName}</div>
+        <div className="page">{this.props.pageName} page</div>
         <nav className="navigation">
           <Link to="/">Main</Link>
           <Link to="/aboutUs">About Us</Link>

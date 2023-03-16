@@ -26,6 +26,7 @@ class Main extends Component {
         <input
           type="search"
           value={this.state.inputValue}
+          placeholder={'search'}
           onChange={(e) => this.setState({ inputValue: e.currentTarget.value })}
         />
         <div className="cardBox">
