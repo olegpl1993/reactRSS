@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
+import React from 'react';
 import App from './App';
 
 describe('App', () => {
   it('Test rendering App component with all cards', () => {
     render(<App />);
-    screen.debug();
     expect(screen.getByText(/Main page/i)).toBeInTheDocument();
     expect(screen.getByPlaceholderText('search')).toBeInTheDocument();
     expect(screen.getByText('iPhone 9')).toBeInTheDocument();
