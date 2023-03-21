@@ -6,8 +6,9 @@
 }
 
 .page {
-  width: 200px;
-  font-size: 30px;
+  width: 250px;
+  font-size: 26px;
+  padding: 10px;
 }
 
 .navigation {

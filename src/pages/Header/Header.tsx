@@ -14,6 +14,7 @@ class Header extends Component<MyProps> {
         <nav className="navigation">
           <Link to="/">Main</Link>
           <Link to="/aboutUs">About Us</Link>
+          <Link to="/forms">Forms</Link>
         </nav>
       </div>
     );
