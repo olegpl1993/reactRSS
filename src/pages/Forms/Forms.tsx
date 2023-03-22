@@ -13,6 +13,10 @@ interface FormData {
 }
 
 class Forms extends React.Component {
+  state = {
+    formArr: [],
+  };
+
   formData: FormData = {
     name: '',
     date: '',
@@ -46,7 +50,9 @@ class Forms extends React.Component {
     this.formData.green = green ? green : false;
     const image = this.imageRef.current?.value;
     this.formData.image = image ? image : '';
+    console.log(this.state);
     console.log(this.formData);
+    this.setState({ formArr: [...this.state.formArr, this.formData] });
   };
 
   render() {
