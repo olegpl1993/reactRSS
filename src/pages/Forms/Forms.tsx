@@ -30,6 +30,16 @@ class Forms extends React.Component {
   greenRef = createRef<HTMLInputElement>();
   imageRef = createRef<HTMLInputElement>();
 
+  clearForm = () => {
+    if (this.nameRef.current?.value) this.nameRef.current.value = '';
+    if (this.dateRef.current?.value) this.dateRef.current.value = '';
+    if (this.musicRef.current?.value) this.musicRef.current.value = '';
+    if (this.gamerRef.current?.value) this.gamerRef.current.checked = false;
+    if (this.redRef.current?.value) this.redRef.current.checked = false;
+    if (this.greenRef.current?.value) this.greenRef.current.checked = false;
+    if (this.imageRef.current?.value) this.imageRef.current.value = '';
+  };
+
   createCard = () => {
     const name = this.nameRef.current?.value;
     this.formData.name = name ? name : '';
@@ -47,6 +57,8 @@ class Forms extends React.Component {
     const image = imgFile?.length ? URL.createObjectURL(imgFile[0]) : '';
     this.formData.image = image ? image : '';
     this.setState({ formArr: [...this.state.formArr, Object.assign({}, this.formData)] });
+    alert('data has been saved');
+    this.clearForm();
   };
 
   render() {
