@@ -1,19 +1,14 @@
 import './Forms.css';
 import React, { createRef } from 'react';
 import Header from '../Header/Header';
+import { FormData } from 'types';
+import FormCard from '../../components/formCard/formCard';
 
-interface FormData {
-  name: string;
-  date: string;
-  music: string;
-  gamer: boolean;
-  red: boolean;
-  green: boolean;
-  image: string;
+interface FormState {
+  formArr: FormData[];
 }
-
 class Forms extends React.Component {
-  state = {
+  state: FormState = {
     formArr: [],
   };
 
@@ -48,14 +43,15 @@ class Forms extends React.Component {
     this.formData.red = red ? red : false;
     const green = this.greenRef.current?.checked;
     this.formData.green = green ? green : false;
-    const image = this.imageRef.current?.value;
+    const imgFile = this.imageRef.current?.files;
+    const image = imgFile?.length ? URL.createObjectURL(imgFile[0]) : '';
     this.formData.image = image ? image : '';
-    console.log(this.state);
-    console.log(this.formData);
-    this.setState({ formArr: [...this.state.formArr, this.formData] });
+    this.setState({ formArr: [...this.state.formArr, Object.assign({}, this.formData)] });
   };
 
   render() {
+    const { formArr } = this.state;
+    console.log(formArr);
     return (
       <div className="forms">
         <Header pageName={'Forms'} />
@@ -107,6 +103,17 @@ class Forms extends React.Component {
                 Create card
               </button>
             </div>
+          </div>
+          <div className="formCardBox">
+            {formArr.length > 0 ? (
+              formArr.map((formData) => (
+                <div key={Math.random()}>
+                  <FormCard formData={formData} />
+                </div>
+              ))
+            ) : (
+              <div>cards list empty</div>
+            )}
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@ import './Main.css';
 import React, { Component } from 'react';
 import Header from '../Header/Header';
 import products from '../../bd';
-import Card from '../../card/card';
+import Card from '../../components/card/card';
 
 class Main extends Component {
   state = {

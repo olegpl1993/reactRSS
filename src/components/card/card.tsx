@@ -1,21 +1,6 @@
 import './card.css';
 import React from 'react';
-
-interface Product {
-  product: {
-    id: number;
-    title: string;
-    description: string;
-    price: number;
-    discountPercentage: number;
-    rating: number;
-    stock: number;
-    brand: string;
-    category: string;
-    thumbnail: string;
-    images: string[];
-  };
-}
+import { Product } from 'types';
 
 class Card extends React.Component<Product> {
   render() {

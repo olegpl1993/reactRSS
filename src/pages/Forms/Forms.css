@@ -1,8 +1,10 @@
 .formsPage {
   border: 1px solid red;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 10px;
 }
 
 .formsBox {
@@ -28,4 +30,14 @@
 .formsBTN {
 padding: 10px;
 font-size: 25px;
+}
+
+.formCardBox {
+  border: 1px solid blueviolet;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  min-height: 400px;
 }
