@@ -41,7 +41,9 @@ class Forms extends React.Component<unknown, FormState> {
 
   validationForm = () => {
     this.validObj.name =
-      !!this.formData.name.match(/^[a-zA-Zа-яА-Я]{2,20}?$/u) && this.formData.name !== '';
+      !!this.formData.name.match(/^[a-zA-Zа-яА-Я]{2,20}?$/u) &&
+      this.formData.name !== '' &&
+      !(this.formData.name[0] === this.formData.name[0].toLowerCase());
     this.validObj.date = this.formData.date.length > 0;
     this.validObj.music = this.formData.music !== 'empty';
     this.validObj.gamer = this.formData.gamer;
