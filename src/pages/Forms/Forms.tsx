@@ -7,8 +7,8 @@ import FormCard from '../../components/formCard/formCard';
 interface FormState {
   formArr: FormData[];
 }
-class Forms extends React.Component {
-  state: FormState = {
+class Forms extends React.Component<unknown, FormState> {
+  state = {
     formArr: [],
   };
 
@@ -22,6 +22,15 @@ class Forms extends React.Component {
     image: '',
   };
 
+  validObj = {
+    name: true,
+    date: true,
+    music: true,
+    gamer: true,
+    color: true,
+    image: true,
+  };
+
   nameRef = createRef<HTMLInputElement>();
   dateRef = createRef<HTMLInputElement>();
   musicRef = createRef<HTMLSelectElement>();
@@ -29,6 +38,16 @@ class Forms extends React.Component {
   redRef = createRef<HTMLInputElement>();
   greenRef = createRef<HTMLInputElement>();
   imageRef = createRef<HTMLInputElement>();
+
+  validationForm = () => {
+    this.validObj.name =
+      !!this.formData.name.match(/^[a-zA-Zа-яА-Я]{2,20}?$/u) && this.formData.name !== '';
+    this.validObj.date = this.formData.date.length > 0;
+    this.validObj.music = this.formData.music !== 'empty';
+    this.validObj.gamer = this.formData.gamer;
+    this.validObj.color = this.formData.red || this.formData.green;
+    this.validObj.image = this.formData.image.length > 0;
+  };
 
   clearForm = () => {
     if (this.nameRef.current?.value) this.nameRef.current.value = '';
@@ -56,14 +75,21 @@ class Forms extends React.Component {
     const imgFile = this.imageRef.current?.files;
     const image = imgFile?.length ? URL.createObjectURL(imgFile[0]) : '';
     this.formData.image = image ? image : '';
-    this.setState({ formArr: [...this.state.formArr, Object.assign({}, this.formData)] });
-    alert('data has been saved');
-    this.clearForm();
+    this.validationForm();
+    this.setState({ formArr: [...this.state.formArr] });
+    if (
+      Object.values(this.validObj).every((el) => {
+        return el === true;
+      })
+    ) {
+      this.setState({ formArr: [...this.state.formArr, Object.assign({}, this.formData)] });
+      alert('data has been saved');
+      this.clearForm();
+    }
   };
 
   render() {
     const { formArr } = this.state;
-    console.log(formArr);
     return (
       <div className="forms">
         <Header pageName={'Forms'} />
@@ -73,13 +99,16 @@ class Forms extends React.Component {
               <div className="formsTitle">Name</div>
               <input className="formsInput" type="text" placeholder="name" ref={this.nameRef} />
             </div>
+            <div className="validRow">{this.validObj.name ? '' : 'incorrect input'}</div>
             <div className="formsRow">
               <div className="formsTitle">Date</div>
               <input className="formsInput" type="date" ref={this.dateRef} />
             </div>
+            <div className="validRow">{this.validObj.date ? '' : 'select date'}</div>
             <div className="formsRow">
               <div className="formsTitle">Music genre</div>
-              <select name="music" ref={this.musicRef}>
+              <select name="music" ref={this.musicRef} defaultValue="empty">
+                <option disabled value="empty"></option>
                 <option value="pop">Pop</option>
                 <option value="hipHop">Hip hop</option>
                 <option value="rock">Rock</option>
@@ -88,10 +117,12 @@ class Forms extends React.Component {
                 <option value="blues">Blues</option>
               </select>
             </div>
+            <div className="validRow">{this.validObj.music ? '' : 'select music'}</div>
             <div className="formsRow">
               <div className="formsTitle">Gamer?</div>
               <input className="formsInput" type="checkbox" ref={this.gamerRef} />
             </div>
+            <div className="validRow">{this.validObj.gamer ? '' : 'only for gamer'}</div>
             <div className="formsRow">
               <div className="formsTitle">Like color</div>
               <div>
@@ -101,10 +132,12 @@ class Forms extends React.Component {
                 Green <input type="radio" name="color" value="green" ref={this.greenRef} />
               </div>
             </div>
+            <div className="validRow">{this.validObj.color ? '' : 'select color'}</div>
             <div className="formsRow">
               <div className="formsTitle">Img</div>
               <input type="file" multiple accept="image/*" ref={this.imageRef} />
             </div>
+            <div className="validRow">{this.validObj.image ? '' : 'select foto'}</div>
             <div className="formsRow">
               <button
                 className="formsBTN"
