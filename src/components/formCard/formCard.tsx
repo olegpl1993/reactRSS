@@ -14,7 +14,6 @@ class FormCard extends React.Component<FormCardProps> {
       ? 'Green'
       : 'none';
     const imgUrl = this.props.formData.image ? this.props.formData.image : '';
-    console.log(this.props.formData);
     return (
       <div className="formCard">
         <div className="formCardRow">Name: {this.props.formData.name}</div>
