@@ -26,4 +26,11 @@ describe('App', () => {
     await userEvent.click(screen.getByText('About Us'));
     expect(screen.getByText(/About Us page/i)).toBeInTheDocument();
   });
+
+  it('Test open Forms page', async () => {
+    render(<App />);
+    expect(screen.getByText(/Forms/i)).toBeInTheDocument();
+    await userEvent.click(screen.getByText('Forms'));
+    expect(screen.getByText(/Forms page/i)).toBeInTheDocument();
+  });
 });
