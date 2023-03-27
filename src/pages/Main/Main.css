@@ -1,0 +1,20 @@
+.main {
+  min-width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid green;
+}
+
+.cardBox {
+  border: 1px solid rgb(255, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+  padding: 50px;
+}
