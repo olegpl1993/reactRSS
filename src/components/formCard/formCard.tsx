@@ -1,24 +1,22 @@
 import './formCard.css';
 import React from 'react';
-import { FormData } from 'types';
+import { FormStateData } from 'types';
 
 interface Props {
-  formData: FormData;
+  formStateData: FormStateData;
 }
 
 function FormCard(props: Props) {
-  const { formData } = props;
-  const likeColor = formData.red ? 'Red' : formData.green ? 'Green' : 'none';
-  const imgUrl = formData.image ? formData.image : '';
+  const { formStateData } = props;
   return (
     <div className="formCard">
-      <div className="formCardRow">Name: {formData.name}</div>
-      <div className="formCardRow">Date: {formData.date}</div>
-      <div className="formCardRow">Music genre: {formData.music}</div>
-      <div className="formCardRow">Gamer: {formData.gamer ? 'yes' : 'no'}</div>
-      <div className="formCardRow">Like color: {likeColor}</div>
-      {imgUrl.length > 0 ? (
-        <img className="formCardImg" src={imgUrl} alt="Img" />
+      <div className="formCardRow">Name: {formStateData.name}</div>
+      <div className="formCardRow">Date: {formStateData.date}</div>
+      <div className="formCardRow">Music genre: {formStateData.music}</div>
+      <div className="formCardRow">Gamer: {formStateData.gamer ? 'yes' : 'no'}</div>
+      <div className="formCardRow">Like color: {formStateData.color}</div>
+      {formStateData.image.length > 0 ? (
+        <img className="formCardImg" src={formStateData.image} alt="Img" />
       ) : (
         <div className="formCardImg">no img</div>
       )}

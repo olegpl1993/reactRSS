@@ -3,8 +3,16 @@ export interface FormData {
   date: string;
   music: string;
   gamer: boolean;
-  red: boolean;
-  green: boolean;
+  color: 'red' | 'green';
+  image: FileList;
+}
+
+export interface FormStateData {
+  name: string;
+  date: string;
+  music: string;
+  gamer: boolean;
+  color: 'red' | 'green';
   image: string;
 }
 
