@@ -38,6 +38,7 @@ class Forms extends React.Component<unknown, FormState> {
   redRef = createRef<HTMLInputElement>();
   greenRef = createRef<HTMLInputElement>();
   imageRef = createRef<HTMLInputElement>();
+  formRef = createRef<HTMLFormElement>();
 
   validationForm = () => {
     this.validObj.name =
@@ -52,16 +53,11 @@ class Forms extends React.Component<unknown, FormState> {
   };
 
   clearForm = () => {
-    if (this.nameRef.current?.value) this.nameRef.current.value = '';
-    if (this.dateRef.current?.value) this.dateRef.current.value = '';
-    if (this.musicRef.current?.value) this.musicRef.current.value = '';
-    if (this.gamerRef.current?.value) this.gamerRef.current.checked = false;
-    if (this.redRef.current?.value) this.redRef.current.checked = false;
-    if (this.greenRef.current?.value) this.greenRef.current.checked = false;
-    if (this.imageRef.current?.value) this.imageRef.current.value = '';
+    this.formRef.current?.reset();
   };
 
-  createCard = () => {
+  createCard = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     const name = this.nameRef.current?.value;
     this.formData.name = name ? name : '';
     const date = this.dateRef.current?.value;
@@ -96,61 +92,66 @@ class Forms extends React.Component<unknown, FormState> {
       <div className="forms">
         <Header pageName={'Forms'} />
         <div className="formsPage">
-          <div className="formsBox">
-            <div className="formsRow">
-              <div className="formsTitle">Name</div>
-              <input className="formsInput" type="text" placeholder="name" ref={this.nameRef} />
-            </div>
-            <div className="validRow">{this.validObj.name ? '' : 'incorrect input'}</div>
-            <div className="formsRow">
-              <div className="formsTitle">Date</div>
-              <input className="formsInput" type="date" ref={this.dateRef} />
-            </div>
-            <div className="validRow">{this.validObj.date ? '' : 'select date'}</div>
-            <div className="formsRow">
-              <div className="formsTitle">Music genre</div>
-              <select name="music" ref={this.musicRef} defaultValue="empty">
-                <option disabled value="empty"></option>
-                <option value="pop">Pop</option>
-                <option value="hipHop">Hip hop</option>
-                <option value="rock">Rock</option>
-                <option value="jazz">Jazz</option>
-                <option value="disco">Disco</option>
-                <option value="blues">Blues</option>
-              </select>
-            </div>
-            <div className="validRow">{this.validObj.music ? '' : 'select music'}</div>
-            <div className="formsRow">
-              <div className="formsTitle">Gamer?</div>
-              <input className="formsInput" type="checkbox" ref={this.gamerRef} />
-            </div>
-            <div className="validRow">{this.validObj.gamer ? '' : 'only for gamer'}</div>
-            <div className="formsRow">
-              <div className="formsTitle">Like color</div>
+          <form className="formsBox" onSubmit={this.createCard} ref={this.formRef}>
+            <label className="formsRow">
               <div>
-                Red <input type="radio" name="color" value="red" ref={this.redRef} />
+                <div className="formsTitle">Name</div>
+                <input className="formsInput" type="text" placeholder="name" ref={this.nameRef} />
               </div>
+              <div className="validRow">{this.validObj.name ? '' : 'incorrect input'}</div>
+            </label>
+            <label className="formsRow">
               <div>
-                Green <input type="radio" name="color" value="green" ref={this.greenRef} />
+                <div className="formsTitle">Date</div>
+                <input className="formsInput" type="date" ref={this.dateRef} />
               </div>
-            </div>
-            <div className="validRow">{this.validObj.color ? '' : 'select color'}</div>
+              <div className="validRow">{this.validObj.date ? '' : 'select date'}</div>
+            </label>
+            <label className="formsRow">
+              <div>
+                <div className="formsTitle">Music genre</div>
+                <select name="music" ref={this.musicRef} defaultValue="empty">
+                  <option disabled value="empty"></option>
+                  <option value="pop">Pop</option>
+                  <option value="hipHop">Hip hop</option>
+                  <option value="rock">Rock</option>
+                  <option value="jazz">Jazz</option>
+                  <option value="disco">Disco</option>
+                  <option value="blues">Blues</option>
+                </select>
+              </div>
+              <div className="validRow">{this.validObj.music ? '' : 'select music'}</div>
+            </label>
+            <label className="formsRow">
+              <div>
+                <div className="formsTitle">Gamer?</div>
+                <input className="formsInput" type="checkbox" ref={this.gamerRef} />
+              </div>
+              <div className="validRow">{this.validObj.gamer ? '' : 'only for gamer'}</div>
+            </label>
+            <label className="formsRow">
+              <div>
+                <div className="formsTitle">Like color</div>
+                <div>
+                  Red <input type="radio" name="color" value="red" ref={this.redRef} />
+                </div>
+                <div>
+                  Green <input type="radio" name="color" value="green" ref={this.greenRef} />
+                </div>
+              </div>
+              <div className="validRow">{this.validObj.color ? '' : 'select color'}</div>
+            </label>
+            <label className="formsRow">
+              <div>
+                <div className="formsTitle">Img</div>
+                <input type="file" multiple accept="image/*" ref={this.imageRef} />
+              </div>
+              <div className="validRow">{this.validObj.image ? '' : 'select foto'}</div>
+            </label>
             <div className="formsRow">
-              <div className="formsTitle">Img</div>
-              <input type="file" multiple accept="image/*" ref={this.imageRef} />
+              <input type="submit" value="Create card" className="formsBTN" />
             </div>
-            <div className="validRow">{this.validObj.image ? '' : 'select foto'}</div>
-            <div className="formsRow">
-              <button
-                className="formsBTN"
-                onClick={() => {
-                  this.createCard();
-                }}
-              >
-                Create card
-              </button>
-            </div>
-          </div>
+          </form>
           <div className="formCardBox">
             {formArr.length > 0 ? (
               formArr.map((formData) => (
