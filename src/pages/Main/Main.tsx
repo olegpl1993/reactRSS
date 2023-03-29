@@ -1,5 +1,5 @@
 import './Main.css';
-import React, { useEffect, useLayoutEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Header from '../Header/Header';
 import products from '../../bd';
 import Card from '../../components/card/card';
