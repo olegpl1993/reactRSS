@@ -1,24 +1,23 @@
 import './Header.css';
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-interface MyProps {
+interface Props {
   pageName: string;
 }
 
-class Header extends Component<MyProps> {
-  render() {
-    return (
-      <div className="header">
-        <div className="page">{this.props.pageName} page</div>
-        <nav className="navigation">
-          <Link to="/">Main</Link>
-          <Link to="/aboutUs">About Us</Link>
-          <Link to="/forms">Forms</Link>
-        </nav>
-      </div>
-    );
-  }
+function Header(props: Props) {
+  const { pageName } = props;
+  return (
+    <div className="header">
+      <div className="page">{pageName} page</div>
+      <nav className="navigation">
+        <Link to="/">Main</Link>
+        <Link to="/aboutUs">About Us</Link>
+        <Link to="/forms">Forms</Link>
+      </nav>
+    </div>
+  );
 }
 
 export default Header;
