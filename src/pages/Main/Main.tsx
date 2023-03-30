@@ -1,10 +1,18 @@
 import './Main.css';
 import React, { useEffect, useRef } from 'react';
-import Header from '../Header/Header';
 import CardBox from '../../components/cardBox/cardBox';
 
-function Main() {
+interface Props {
+  setPageState: React.Dispatch<React.SetStateAction<string>>;
+}
+
+function Main(props: Props) {
+  const { setPageState } = props;
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    setPageState('Main');
+  }, [setPageState]);
 
   useEffect(() => {
     const ref = inputRef.current;
@@ -18,7 +26,6 @@ function Main() {
 
   return (
     <div className="main">
-      <Header pageName={'Main'} />
       <input type="search" placeholder={'search'} ref={inputRef} />
       <CardBox />
     </div>

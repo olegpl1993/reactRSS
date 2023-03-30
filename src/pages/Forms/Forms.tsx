@@ -1,15 +1,22 @@
 import './Forms.css';
-import React, { useState } from 'react';
-import Header from '../Header/Header';
+import React, { useEffect, useState } from 'react';
 import { FormStateData } from 'types';
 import FormComponent from '../../components/formComponent/formComponent';
 import FormCardBox from '../../components/formCardBox/formCardBox';
+interface Props {
+  setPageState: React.Dispatch<React.SetStateAction<string>>;
+}
 
-function Forms() {
+function Forms(props: Props) {
+  const { setPageState } = props;
   const [formState, setFormState] = useState<FormStateData[]>([]);
+
+  useEffect(() => {
+    setPageState('Forms');
+  }, [setPageState]);
+
   return (
     <div className="forms">
-      <Header pageName={'Forms'} />
       <div className="formsPage">
         <FormComponent formState={formState} setFormState={setFormState} />
         <FormCardBox formState={formState} />
