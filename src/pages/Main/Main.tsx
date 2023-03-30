@@ -1,8 +1,7 @@
 import './Main.css';
 import React, { useEffect, useRef } from 'react';
 import Header from '../Header/Header';
-import products from '../../bd';
-import Card from '../../components/card/card';
+import CardBox from '../../components/cardBox/cardBox';
 
 function Main() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -21,13 +20,7 @@ function Main() {
     <div className="main">
       <Header pageName={'Main'} />
       <input type="search" placeholder={'search'} ref={inputRef} />
-      <div className="cardBox">
-        {products.map((product) => (
-          <div key={product.id}>
-            <Card product={product} />
-          </div>
-        ))}
-      </div>
+      <CardBox />
     </div>
   );
 }
