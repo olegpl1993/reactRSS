@@ -1,0 +1,25 @@
+.aboutUs {
+  padding: 10px;
+}
+
+.btn {
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  border: 1px solid red;
+}
+
+.testString {
+  border: 1px solid black;
+  font-size: 25px;
+  font-weight: 600;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
