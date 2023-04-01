@@ -9,9 +9,10 @@ interface Props {
 
 function Card(props: Props) {
   const { product } = props;
-  const themes = useContext(ThemesContext);
+  const { themesState } = useContext(ThemesContext);
+
   return (
-    <div className={`card ${themes}`}>
+    <div className={`card ${themesState}`}>
       <div className="title">{product.title}</div>
       <div className="row">Category: {product.category}</div>
       <div className="row">Brand: {product.brand}</div>

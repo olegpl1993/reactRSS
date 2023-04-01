@@ -11,7 +11,7 @@ interface Props {
 
 function FormComponent(props: Props) {
   const { formState, setFormState } = props;
-  const themes = useContext(ThemesContext);
+  const { themesState } = useContext(ThemesContext);
   const {
     register,
     formState: { errors },
@@ -34,7 +34,7 @@ function FormComponent(props: Props) {
     reset();
   };
   return (
-    <form className={`formsBox ${themes}`} onSubmit={handleSubmit(onSubmit)}>
+    <form className={`formsBox ${themesState}`} onSubmit={handleSubmit(onSubmit)}>
       <label className="formsRow">
         <div>
           <div className="formsTitle">Name</div>

@@ -9,9 +9,9 @@ interface Props {
 
 function FormCard(props: Props) {
   const { formStateData } = props;
-  const themes = useContext(ThemesContext);
+  const { themesState } = useContext(ThemesContext);
   return (
-    <div className={`formCard ${themes}`}>
+    <div className={`formCard ${themesState}`}>
       <div className="formCardRow">Name: {formStateData.name}</div>
       <div className="formCardRow">Date: {formStateData.date}</div>
       <div className="formCardRow">Music genre: {formStateData.music}</div>

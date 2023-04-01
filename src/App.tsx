@@ -7,16 +7,24 @@ import Error404 from './pages/Error404/Error404';
 import Forms from './pages/Forms/Forms';
 import Header from './pages/Header/Header';
 
-export const ThemesContext = createContext('light');
+interface ContextValue {
+  themesState: string;
+  setThemesState: (c: string) => void;
+}
+
+export const ThemesContext = createContext<ContextValue>({
+  themesState: 'light',
+  setThemesState: () => {},
+});
 
 function App() {
   const [pageState, setPageState] = useState('');
   const [themesState, setThemesState] = useState('light');
   return (
     <BrowserRouter>
-      <ThemesContext.Provider value={themesState}>
+      <ThemesContext.Provider value={{ themesState, setThemesState }}>
         <div className="app">
-          <Header pageName={pageState} setThemesState={setThemesState} />
+          <Header pageName={pageState} />
           <Routes>
             <Route path="/" element={<Main setPageState={setPageState} />} />
             <Route path="/aboutUs" element={<AboutUs setPageState={setPageState} />} />
