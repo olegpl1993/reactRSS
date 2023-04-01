@@ -1,20 +1,14 @@
+import { Context } from '../../App';
 import './Error404.css';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 
-interface Props {
-  setPageState: React.Dispatch<React.SetStateAction<string>>;
-}
-
-function Error404(props: Props) {
-  const { setPageState } = props;
+function Error404() {
+  const { setPageState } = useContext(Context);
   useEffect(() => {
-    setPageState('Forms');
+    setPageState('Error404');
   }, [setPageState]);
-  return (
-    <div className="error404">
-      <div className="header">Error 404</div>
-    </div>
-  );
+
+  return <div className="error404">Error 404</div>;
 }
 
 export default Error404;

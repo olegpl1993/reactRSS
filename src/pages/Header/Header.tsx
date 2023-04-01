@@ -1,21 +1,18 @@
-import { ThemesContext } from '../../App';
+import { Context } from '../../App';
 import './Header.css';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-interface Props {
-  pageName: string;
-}
+function Header() {
+  const { themesState, setThemesState, pageState } = useContext(Context);
 
-function Header(props: Props) {
-  const { pageName } = props;
-  const { themesState, setThemesState } = useContext(ThemesContext);
   const handleChangeThemes = () => {
     setThemesState(themesState === 'light' ? 'dark' : 'light');
   };
+
   return (
     <div className="header">
-      <div className="page">{pageName} page</div>
+      <div className="page">{pageState} page</div>
       <nav className="navigation">
         <Link to="/">Main</Link>
         <Link to="/aboutUs">About Us</Link>

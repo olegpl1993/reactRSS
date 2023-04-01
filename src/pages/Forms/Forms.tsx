@@ -1,19 +1,17 @@
 import './Forms.css';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FormStateData } from 'types';
 import FormComponent from '../../components/formComponent/formComponent';
 import FormCardBox from '../../components/formCardBox/formCardBox';
-interface Props {
-  setPageState: React.Dispatch<React.SetStateAction<string>>;
-}
+import { Context } from '../../App';
 
-function Forms(props: Props) {
-  const { setPageState } = props;
-  const [formState, setFormState] = useState<FormStateData[]>([]);
-
+function Forms() {
+  const { setPageState } = useContext(Context);
   useEffect(() => {
     setPageState('Forms');
   }, [setPageState]);
+
+  const [formState, setFormState] = useState<FormStateData[]>([]);
 
   return (
     <div className="forms">

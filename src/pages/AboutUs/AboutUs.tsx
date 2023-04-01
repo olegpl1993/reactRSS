@@ -1,12 +1,9 @@
+import { Context } from '../../App';
 import './AboutUs.css';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 
-interface Props {
-  setPageState: React.Dispatch<React.SetStateAction<string>>;
-}
-
-function AboutUs(props: Props) {
-  const { setPageState } = props;
+function AboutUs() {
+  const { setPageState } = useContext(Context);
   useEffect(() => {
     setPageState('About Us');
   }, [setPageState]);

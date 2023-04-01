@@ -1,4 +1,4 @@
-import { ThemesContext } from '../../App';
+import { Context } from '../../App';
 import './card.css';
 import React, { useContext } from 'react';
 import { Product } from 'types';
@@ -9,7 +9,7 @@ interface Props {
 
 function Card(props: Props) {
   const { product } = props;
-  const { themesState } = useContext(ThemesContext);
+  const { themesState } = useContext(Context);
 
   return (
     <div className={`card ${themesState}`}>

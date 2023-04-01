@@ -10,29 +10,34 @@ import Header from './pages/Header/Header';
 interface ContextValue {
   themesState: string;
   setThemesState: (c: string) => void;
+  pageState: string;
+  setPageState: (c: string) => void;
 }
 
-export const ThemesContext = createContext<ContextValue>({
+export const Context = createContext<ContextValue>({
   themesState: 'light',
   setThemesState: () => {},
+  pageState: '',
+  setPageState: () => {},
 });
 
 function App() {
   const [pageState, setPageState] = useState('');
   const [themesState, setThemesState] = useState('light');
+
   return (
     <BrowserRouter>
-      <ThemesContext.Provider value={{ themesState, setThemesState }}>
+      <Context.Provider value={{ themesState, setThemesState, pageState, setPageState }}>
         <div className="app">
-          <Header pageName={pageState} />
+          <Header />
           <Routes>
-            <Route path="/" element={<Main setPageState={setPageState} />} />
-            <Route path="/aboutUs" element={<AboutUs setPageState={setPageState} />} />
-            <Route path="/forms" element={<Forms setPageState={setPageState} />} />
-            <Route path="*" element={<Error404 setPageState={setPageState} />} />
+            <Route path="/" element={<Main />} />
+            <Route path="/aboutUs" element={<AboutUs />} />
+            <Route path="/forms" element={<Forms />} />
+            <Route path="*" element={<Error404 />} />
           </Routes>
         </div>
-      </ThemesContext.Provider>
+      </Context.Provider>
     </BrowserRouter>
   );
 }

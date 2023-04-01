@@ -1,18 +1,15 @@
 import './Main.css';
-import React, { useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import CardBox from '../../components/cardBox/cardBox';
+import { Context } from '../../App';
 
-interface Props {
-  setPageState: React.Dispatch<React.SetStateAction<string>>;
-}
-
-function Main(props: Props) {
-  const { setPageState } = props;
-  const inputRef = useRef<HTMLInputElement>(null);
-
+function Main() {
+  const { setPageState } = useContext(Context);
   useEffect(() => {
     setPageState('Main');
   }, [setPageState]);
+
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const ref = inputRef.current;

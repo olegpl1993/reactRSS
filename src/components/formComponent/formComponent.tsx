@@ -1,4 +1,4 @@
-import { ThemesContext } from '../../App';
+import { Context } from '../../App';
 import './formComponent.css';
 import React, { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -11,7 +11,7 @@ interface Props {
 
 function FormComponent(props: Props) {
   const { formState, setFormState } = props;
-  const { themesState } = useContext(ThemesContext);
+  const { themesState } = useContext(Context);
   const {
     register,
     formState: { errors },
