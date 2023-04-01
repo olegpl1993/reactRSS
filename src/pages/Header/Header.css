@@ -18,4 +18,12 @@
   align-items: center;
   justify-content: flex-start;
   gap: 20px;
+  margin-right: 50px;
+}
+
+.themesBTN {
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
 }

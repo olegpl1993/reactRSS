@@ -1,13 +1,19 @@
+import { ThemesContext } from '../../App';
 import './Header.css';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 interface Props {
   pageName: string;
+  setThemesState: React.Dispatch<React.SetStateAction<string>>;
 }
 
 function Header(props: Props) {
-  const { pageName } = props;
+  const { pageName, setThemesState } = props;
+  const themes = useContext(ThemesContext);
+  const handleChangeThemes = () => {
+    setThemesState(themes === 'light' ? 'dark' : 'light');
+  };
   return (
     <div className="header">
       <div className="page">{pageName} page</div>
@@ -16,6 +22,9 @@ function Header(props: Props) {
         <Link to="/aboutUs">About Us</Link>
         <Link to="/forms">Forms</Link>
       </nav>
+      <button className={`themesBTN ${themes}`} onClick={handleChangeThemes}>
+        Change themes
+      </button>
     </div>
   );
 }

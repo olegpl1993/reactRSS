@@ -1,5 +1,6 @@
+import { ThemesContext } from '../../App';
 import './formCard.css';
-import React from 'react';
+import React, { useContext } from 'react';
 import { FormStateData } from 'types';
 
 interface Props {
@@ -8,8 +9,9 @@ interface Props {
 
 function FormCard(props: Props) {
   const { formStateData } = props;
+  const themes = useContext(ThemesContext);
   return (
-    <div className="formCard">
+    <div className={`formCard ${themes}`}>
       <div className="formCardRow">Name: {formStateData.name}</div>
       <div className="formCardRow">Date: {formStateData.date}</div>
       <div className="formCardRow">Music genre: {formStateData.music}</div>

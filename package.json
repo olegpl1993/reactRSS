@@ -7,7 +7,7 @@
     "start": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "fix": "eslint ./src --fix",
+    "lint": "eslint ./src --fix",
     "test": "vitest --coverage"
   },
   "dependencies": {

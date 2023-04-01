@@ -1,5 +1,6 @@
+import { ThemesContext } from '../../App';
 import './card.css';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Product } from 'types';
 
 interface Props {
@@ -8,8 +9,9 @@ interface Props {
 
 function Card(props: Props) {
   const { product } = props;
+  const themes = useContext(ThemesContext);
   return (
-    <div className="card">
+    <div className={`card ${themes}`}>
       <div className="title">{product.title}</div>
       <div className="row">Category: {product.category}</div>
       <div className="row">Brand: {product.brand}</div>

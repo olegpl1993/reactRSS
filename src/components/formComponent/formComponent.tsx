@@ -1,5 +1,6 @@
+import { ThemesContext } from '../../App';
 import './formComponent.css';
-import React from 'react';
+import React, { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormStateData, FormData } from 'types';
 
@@ -10,6 +11,7 @@ interface Props {
 
 function FormComponent(props: Props) {
   const { formState, setFormState } = props;
+  const themes = useContext(ThemesContext);
   const {
     register,
     formState: { errors },
@@ -32,7 +34,7 @@ function FormComponent(props: Props) {
     reset();
   };
   return (
-    <form className="formsBox" onSubmit={handleSubmit(onSubmit)}>
+    <form className={`formsBox ${themes}`} onSubmit={handleSubmit(onSubmit)}>
       <label className="formsRow">
         <div>
           <div className="formsTitle">Name</div>

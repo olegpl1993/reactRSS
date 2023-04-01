@@ -1,5 +1,4 @@
 .formCard {
-border: 1px solid red;
 padding: 10px;
 display: flex;
 align-items: center;
@@ -11,7 +10,6 @@ gap: 5px;
 .formCardImg {
   height: 150px;
   width: 150px;
-  border: 1px solid green;
   display: flex;
   align-items: center;
   justify-content: center;
