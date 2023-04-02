@@ -16,16 +16,28 @@ export interface FormStateData {
   image: string;
 }
 
-export interface Product {
-  id: number;
+export interface Photo {
+  id: string;
+  owner: string;
+  secret: string;
+  server: string;
+  farm: number;
   title: string;
-  description: string;
-  price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  brand: string;
-  category: string;
-  thumbnail: string;
-  images: string[];
+  ispublic: number;
+  isfriend: number;
+  isfamily: number;
+  url_l: string;
+  height_l: number;
+  width_l: number;
+}
+
+export interface ApiResponse {
+  photos: {
+    page: number;
+    pages: number;
+    perpage: number;
+    total: number;
+    photo: Photo[];
+  };
+  stat: string;
 }

@@ -1,14 +1,19 @@
 import './cardBox.css';
 import Card from '../../components/card/card';
 import React from 'react';
-import products from '../../bd';
+import { Photo } from '../../types';
 
-function CardBox() {
+interface Props {
+  photoArr: Photo[];
+}
+
+function CardBox(props: Props) {
+  const { photoArr } = props;
   return (
     <div className="cardBox">
-      {products.map((product) => (
-        <div key={product.id}>
-          <Card product={product} />
+      {photoArr.map((photo) => (
+        <div key={photo.id}>
+          <Card photo={photo} />
         </div>
       ))}
     </div>
