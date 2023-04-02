@@ -24,7 +24,10 @@ function Main() {
 
   const [photoArr, setPhotoArr] = useState<Photo[]>([]);
   const [errorQuery, setErrorQuery] = useState(false);
-  const queryToAPI = async () => {
+  const handleRequest = async (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLInputElement, MouseEvent>
+  ) => {
+    e.preventDefault();
     const ref = inputRef.current;
     const query = ref?.value;
     console.log(query);
@@ -38,19 +41,23 @@ function Main() {
         setErrorQuery(false);
       }
     } else {
+      setPhotoArr([]);
       setErrorQuery(true);
     }
   };
 
   return (
     <div className="main">
-      <div className="inputRow">
+      <form className="formQueryImg" onSubmit={(e) => handleRequest(e)}>
         <input type="search" placeholder={'search'} ref={inputRef} />
-        <button className="searchBTN" onClick={queryToAPI}>
-          Search
-        </button>
+        <input
+          type="submit"
+          className="searchBTN"
+          value="Search"
+          onClick={(e) => handleRequest(e)}
+        />
         <div className="error">{errorQuery ? 'error query' : ''}</div>
-      </div>
+      </form>
       {photoArr.length ? <CardBox photoArr={photoArr} /> : 'Make a search!'}
     </div>
   );
