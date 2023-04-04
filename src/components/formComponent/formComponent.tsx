@@ -31,6 +31,7 @@ function FormComponent(props: Props) {
         image: URL.createObjectURL(formData.image[0]),
       },
     ]);
+    alert('Create card');
     reset();
   };
   return (
@@ -138,7 +139,7 @@ function FormComponent(props: Props) {
               required: 'select image',
               validate: {
                 acceptedFormat: (files: FileList | null) =>
-                  (files && ['image/jpg', 'image/png'].includes(files[0].type)) || 'jpg | png',
+                  (files && ['image/jpeg', 'image/png'].includes(files[0].type)) || 'jpg | png',
               },
             })}
           />
