@@ -7,14 +7,3 @@
   gap: 10px;
   padding: 10px;
 }
-
-.formQueryImg {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.error {
-  color: red;
-}

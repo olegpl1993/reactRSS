@@ -14,7 +14,7 @@ function Card(props: Props) {
   return (
     <div className={`card ${themesState}`}>
       <div className="title">{photo.title}</div>
-      <img src={photo.url_l} className="img" alt="productImg" />
+      <img src={photo.url_l} className="img" alt="img" />
     </div>
   );
 }

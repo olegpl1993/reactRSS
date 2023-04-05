@@ -20,11 +20,8 @@ function AboutUs() {
   const changeState2 = () => setTestState2(testState2 + 1);
 
   const testValue = useMemo(() => {
-    console.log('useMemo');
     return testFunction(testState1);
   }, [testState1]);
-
-  console.log('render');
 
   return (
     <div className="aboutUs">
