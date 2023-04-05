@@ -1,0 +1,21 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: rgb(0, 0, 0);
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+.light {
+  background-color: rgb(233, 233, 233);
+  color: rgb(34, 34, 34);
+  border: 1px solid green;
+}
+
+.dark {
+  background-color: rgb(34, 34, 34);
+  color: rgb(233, 233, 233);
+  border: 1px solid red;
+}
