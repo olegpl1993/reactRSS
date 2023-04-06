@@ -1,6 +1,6 @@
 .card {
   width: 300px;
-  height: 350px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -8,15 +8,29 @@
   padding: 5px;
 }
 
-.title {
-width: 290px;
-display: flex;
-justify-content: center;
-align-items: center;
-font-size: 16px;
-}
-
 .img {
 height: 250px;
 width: 250px;
+}
+
+.modalCard {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.modalTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  width: 350px;
+}
+
+.modalImg {
+  height: 250px;
+  width: 250px;
 }
