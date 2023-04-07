@@ -15,18 +15,16 @@ function Card(props: Props) {
 
   return (
     <>
-      {modalActiv && (
-        <Modal modalActiv={modalActiv} setModalActiv={setModalActiv}>
-          <div className="modalCard">
-            <div className="modalTitle">Title: {photo.title}</div>
-            <div className="modalTitle">ID: {photo.id}</div>
-            <div className="modalTitle">
-              Full size: {photo.height_l}x{photo.width_l}
-            </div>
-            <img src={photo.url_l} className="modalImg" alt="img" />
+      <Modal modalActiv={modalActiv} setModalActiv={setModalActiv}>
+        <div className="modalCard">
+          <div className="modalTitle">Title: {photo.title}</div>
+          <div className="modalTitle">ID: {photo.id}</div>
+          <div className="modalTitle">
+            Full size: {photo.height_l}x{photo.width_l}
           </div>
-        </Modal>
-      )}
+          <img src={photo.url_l} className="modalImg" alt="img" />
+        </div>
+      </Modal>
       <div className={`card ${themesState}`} onClick={() => setModalActiv(true)}>
         <img src={photo.url_l} className="img" alt="img" />
       </div>
