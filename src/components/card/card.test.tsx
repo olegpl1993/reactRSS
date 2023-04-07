@@ -1,31 +1,26 @@
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 import Card from './card';
+import { Photo } from 'types';
 
-const product = {
-  id: 1,
-  title: 'iPhone 9',
-  description: 'An apple mobile which is nothing like apple',
-  price: 549,
-  discountPercentage: 12.96,
-  rating: 4.69,
-  stock: 94,
-  brand: 'Apple',
-  category: 'smartphones',
-  thumbnail: 'https://i.dummyjson.com/data/products/1/thumbnail.jpg',
-  images: ['https://i.dummyjson.com/data/products/1/3.jpg'],
+const photo: Photo = {
+  id: '52801017300',
+  owner: '182975624@N06',
+  secret: '1386378bb2',
+  server: '65535',
+  farm: 66,
+  title: 'CAR(101)',
+  ispublic: 1,
+  isfriend: 0,
+  isfamily: 0,
+  url_l: 'https://live.staticflickr.com/65535/52801017300_1386378bb2_b.jpg',
+  height_l: 768,
+  width_l: 1024,
 };
 
 describe('Card', () => {
   it('Test rendering single Card', () => {
-    render(<Card product={product} />);
-    expect(screen.getByText('iPhone 9')).toBeInTheDocument();
-    expect(screen.getByText(/smartphones/)).toBeInTheDocument();
-    expect(screen.getByText(/Apple/)).toBeInTheDocument();
-    expect(screen.getByText(/549/)).toBeInTheDocument();
-    expect(screen.getByText(/4.69/)).toBeInTheDocument();
-    expect(screen.getByText(/94/)).toBeInTheDocument();
-    expect(screen.getByText(/An apple mobile which is nothing like apple/)).toBeInTheDocument();
-    expect(screen.getByAltText('productImg')).toBeInTheDocument();
+    render(<Card photo={photo} />);
+    expect(screen.getByAltText('img')).toBeInTheDocument();
   });
 });
