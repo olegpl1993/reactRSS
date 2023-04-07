@@ -26,6 +26,7 @@ function Modal(props: Props) {
     return createPortal(
       <div className="modalWrapper" onClick={() => setModalActiv(false)}>
         <div className="modalBox" onClick={(event) => event.stopPropagation()}>
+          <button className="modalClose" onClick={() => setModalActiv(false)} />
           {props.children}
         </div>
       </div>,
