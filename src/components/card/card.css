@@ -6,6 +6,7 @@
   justify-content: space-around;
   align-items: center;
   padding: 5px;
+  cursor: pointer;
 }
 
 .img {
