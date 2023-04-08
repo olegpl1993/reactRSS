@@ -13,11 +13,12 @@ interface Props {
 function Modal(props: Props) {
   const { modalActiv, setModalActiv } = props;
   const element = document.createElement('div');
-  document.body.style.overflow = modalActiv ? 'hidden' : 'auto';
 
   useEffect(() => {
+    document.body.style.overflow = modalActiv ? 'hidden' : 'auto';
     modalRootElement?.appendChild(element);
     return () => {
+      document.body.style.overflow = 'auto';
       modalRootElement?.removeChild(element);
     };
   });
