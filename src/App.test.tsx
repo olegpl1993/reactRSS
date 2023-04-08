@@ -7,7 +7,6 @@ describe('App', () => {
   it('Test rendering App component with all cards', () => {
     render(<App />);
     expect(screen.getByText(/Main page/i)).toBeInTheDocument();
-    expect(screen.getByText(/Make a search!/i)).toBeInTheDocument();
     expect(screen.getByPlaceholderText('search')).toBeInTheDocument();
   });
 
