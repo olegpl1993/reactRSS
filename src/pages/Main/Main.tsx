@@ -12,11 +12,12 @@ function Main() {
   }, [setPageState]);
 
   const [photoArr, setPhotoArr] = useState<Photo[]>([]);
+  const [isNotFind, setNotFind] = useState<boolean>(false);
 
   return (
     <div className="main">
-      <FormSearchInput setPhotoArr={setPhotoArr} />
-      {photoArr.length ? <CardBox photoArr={photoArr} /> : 'Make a search!'}
+      <FormSearchInput setPhotoArr={setPhotoArr} setNotFind={setNotFind} />
+      <CardBox photoArr={photoArr} isNotFind={isNotFind} />
     </div>
   );
 }
