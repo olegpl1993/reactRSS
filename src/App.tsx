@@ -6,6 +6,8 @@ import Main from './pages/Main/Main';
 import Error404 from './pages/Error404/Error404';
 import Forms from './pages/Forms/Forms';
 import Header from './pages/Header/Header';
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 interface ContextValue {
   themesState: string;
@@ -26,19 +28,21 @@ function App() {
   const [themesState, setThemesState] = useState('light');
 
   return (
-    <BrowserRouter>
-      <Context.Provider value={{ themesState, setThemesState, pageState, setPageState }}>
-        <div className="app">
-          <Header />
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/aboutUs" element={<AboutUs />} />
-            <Route path="/forms" element={<Forms />} />
-            <Route path="*" element={<Error404 />} />
-          </Routes>
-        </div>
-      </Context.Provider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Context.Provider value={{ themesState, setThemesState, pageState, setPageState }}>
+          <div className="app">
+            <Header />
+            <Routes>
+              <Route path="/" element={<Main />} />
+              <Route path="/aboutUs" element={<AboutUs />} />
+              <Route path="/forms" element={<Forms />} />
+              <Route path="*" element={<Error404 />} />
+            </Routes>
+          </div>
+        </Context.Provider>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
