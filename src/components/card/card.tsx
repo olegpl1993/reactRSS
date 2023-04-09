@@ -23,7 +23,7 @@ function Card(props: Props) {
             <div className="modalTitle">
               Full size: {photo.height_l}x{photo.width_l}
             </div>
-            <img src={photo.url_l} className="modalImg" alt="img" />
+            <img src={photo.url_l} className="modalImg" alt="modalImg" />
           </div>
         </Modal>
       )}

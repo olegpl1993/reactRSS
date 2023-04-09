@@ -12,7 +12,7 @@ const formStateData: FormStateData = {
   image: '',
 };
 
-describe('FormCard', () => {
+describe('FormCard test render', () => {
   it('Test rendering single FormCard', () => {
     render(<FormCard formStateData={formStateData} />);
     expect(screen.getByText(/Oleg/)).toBeInTheDocument();

@@ -5,7 +5,7 @@ function LoadingSpinner() {
   return (
     <div className="container">
       <section className="box">
-        <div className="spinner" />
+        <div data-testid="spinner" className="spinner" />
       </section>
     </div>
   );
