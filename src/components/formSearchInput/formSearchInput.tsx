@@ -1,6 +1,9 @@
 import { ApiResponse, Photo } from 'types';
 import './formSearchInput.css';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import { changeSearch } from '../../store/searchSlice';
 
 interface Props {
   setPhotoArr: React.Dispatch<React.SetStateAction<Photo[]>>;
@@ -9,21 +12,15 @@ interface Props {
 
 function FormSearchInput(props: Props) {
   const { setPhotoArr, setNotFind } = props;
+  const dispatch = useDispatch();
 
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    const ref = inputRef.current;
-    if (localStorage.getItem('inputValue') && ref !== null) {
-      ref.value = localStorage.getItem('inputValue') as string;
-    }
-    return () => {
-      localStorage.setItem('inputValue', ref ? ref.value : '');
-    };
-  }, []);
+  const searchState: string = useSelector((state: RootState) => state.search.search);
+  const changeSearchState = async (str: string) => {
+    dispatch(changeSearch(str));
+  };
 
   const queryToApi = async () => {
-    const query = inputRef.current?.value ? inputRef.current?.value : 'nature';
+    const query = searchState ? searchState : 'nature';
     setNotFind(false);
     if (query) {
       const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=cdab90d80d88e1e2836283478170c1ff&tags=${query}&extras=url_l&format=json&nojsoncallback=1`;
@@ -52,7 +49,12 @@ function FormSearchInput(props: Props) {
 
   return (
     <form className="formSearchRow" onSubmit={(e) => handleRequest(e)}>
-      <input type="search" placeholder={'search'} ref={inputRef} />
+      <input
+        type="search"
+        placeholder={'search'}
+        value={searchState}
+        onChange={(e) => changeSearchState(e.target.value)}
+      />
       <input type="submit" className="searchBTN" value="Search" onClick={(e) => handleRequest(e)} />
     </form>
   );

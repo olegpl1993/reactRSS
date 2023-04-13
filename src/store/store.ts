@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import languageReducer from './languageSlice';
+import searchReducer from './searchSlice';
 
 const store = configureStore({
   reducer: {
-    language: languageReducer,
+    search: searchReducer,
   },
 });
 
