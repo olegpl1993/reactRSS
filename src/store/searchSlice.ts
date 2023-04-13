@@ -7,7 +7,6 @@ const searchSlice = createSlice({
   },
   reducers: {
     changeSearch(state, action: PayloadAction<string>) {
-      // eslint-disable-next-line no-param-reassign
       state.search = action.payload;
     },
   },

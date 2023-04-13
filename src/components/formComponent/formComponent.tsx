@@ -2,16 +2,20 @@ import { Context } from '../../App';
 import './formComponent.css';
 import React, { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeForm } from '../../store/formSlice';
+import { RootState } from '../../store/store';
 import { FormStateData, FormData } from 'types';
 
-interface Props {
-  formState: FormStateData[];
-  setFormState: React.Dispatch<React.SetStateAction<FormStateData[]>>;
-}
-
-function FormComponent(props: Props) {
-  const { formState, setFormState } = props;
+function FormComponent() {
   const { themesState } = useContext(Context);
+  const dispatch = useDispatch();
+
+  const formState: FormStateData[] = useSelector((state: RootState) => state.formState.data);
+  const changeFormState = (data: FormStateData[]) => {
+    dispatch(changeForm(data));
+  };
+
   const {
     register,
     formState: { errors },
@@ -20,7 +24,7 @@ function FormComponent(props: Props) {
   } = useForm<FormData>({ mode: 'onSubmit' });
 
   const onSubmit: SubmitHandler<FormData> = (formData) => {
-    setFormState([
+    changeFormState([
       ...formState,
       {
         name: formData.name,

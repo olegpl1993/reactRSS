@@ -1,6 +1,5 @@
 import './Forms.css';
-import React, { useContext, useEffect, useState } from 'react';
-import { FormStateData } from 'types';
+import React, { useContext, useEffect } from 'react';
 import FormComponent from '../../components/formComponent/formComponent';
 import FormCardBox from '../../components/formCardBox/formCardBox';
 import { Context } from '../../App';
@@ -11,13 +10,11 @@ function Forms() {
     setPageState('Forms');
   }, [setPageState]);
 
-  const [formState, setFormState] = useState<FormStateData[]>([]);
-
   return (
     <div className="forms">
       <div className="formsPage">
-        <FormComponent formState={formState} setFormState={setFormState} />
-        <FormCardBox formState={formState} />
+        <FormComponent />
+        <FormCardBox />
       </div>
     </div>
   );

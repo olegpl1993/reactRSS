@@ -2,13 +2,12 @@ import './formCardBox.css';
 import FormCard from '../../components/formCard/formCard';
 import React from 'react';
 import { FormStateData } from 'types';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
 
-interface Props {
-  formState: FormStateData[];
-}
+function FormCardBox() {
+  const formState: FormStateData[] = useSelector((state: RootState) => state.formState.data);
 
-function FormCardBox(props: Props) {
-  const { formState } = props;
   return (
     <div className="formCardBox">
       {formState.length > 0 ? (

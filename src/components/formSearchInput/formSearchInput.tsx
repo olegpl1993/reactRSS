@@ -15,7 +15,7 @@ function FormSearchInput(props: Props) {
   const dispatch = useDispatch();
 
   const searchState: string = useSelector((state: RootState) => state.search.search);
-  const changeSearchState = async (str: string) => {
+  const changeSearchState = (str: string) => {
     dispatch(changeSearch(str));
   };
 
