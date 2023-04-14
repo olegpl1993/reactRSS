@@ -1,22 +1,18 @@
 import './cardBox.css';
 import Card from '../../components/card/card';
 import React from 'react';
-import { Photo } from '../../types';
 import LoadingSpinner from '../../components/Spinner/LoadingSpinner';
+import { useAppSelector } from '../../hook';
 
-interface Props {
-  photoArr: Photo[];
-  isNotFind: boolean;
-}
+function CardBox() {
+  const { photoArr, isNotFind, isLoading } = useAppSelector((state) => state.photoState);
+  console.log('photoArr: ', photoArr);
 
-function CardBox(props: Props) {
-  const { photoArr, isNotFind } = props;
-
-  if (!photoArr.length && isNotFind) {
+  if (isNotFind) {
     return <div className="cardBox">Images not found</div>;
   }
 
-  if (!photoArr.length) {
+  if (isLoading) {
     return (
       <div className="cardBox">
         <LoadingSpinner />

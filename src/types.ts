@@ -41,3 +41,9 @@ export interface ApiResponse {
   };
   stat: string;
 }
+
+export interface PhotoState {
+  photoArr: Photo[];
+  isNotFind: boolean;
+  isLoading: boolean;
+}

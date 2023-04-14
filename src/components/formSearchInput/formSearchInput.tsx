@@ -1,38 +1,20 @@
-import { ApiResponse, Photo } from 'types';
 import './formSearchInput.css';
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
 import { changeSearch } from '../../store/searchSlice';
+import { fetchPhoto } from '../../store/photoSlice';
+import { useAppDispatch, useAppSelector } from '../../hook';
 
-interface Props {
-  setPhotoArr: React.Dispatch<React.SetStateAction<Photo[]>>;
-  setNotFind: React.Dispatch<React.SetStateAction<boolean>>;
-}
+function FormSearchInput() {
+  const dispatch = useAppDispatch();
 
-function FormSearchInput(props: Props) {
-  const { setPhotoArr, setNotFind } = props;
-  const dispatch = useDispatch();
-
-  const searchState: string = useSelector((state: RootState) => state.search.search);
+  const searchState = useAppSelector((state) => state.search.search);
   const changeSearchState = (str: string) => {
     dispatch(changeSearch(str));
   };
 
   const queryToApi = async () => {
     const query = searchState ? searchState : 'nature';
-    setNotFind(false);
-    if (query) {
-      const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=cdab90d80d88e1e2836283478170c1ff&tags=${query}&extras=url_l&format=json&nojsoncallback=1`;
-      const res = await fetch(url);
-      const data: ApiResponse = await res.json();
-      if (data.stat === 'ok' && data.photos.photo.length > 0) {
-        setPhotoArr(data.photos.photo);
-      } else {
-        setPhotoArr([]);
-        setNotFind(true);
-      }
-    }
+    dispatch(fetchPhoto(query));
   };
 
   useEffect(() => {
