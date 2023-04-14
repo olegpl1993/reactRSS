@@ -2,16 +2,15 @@ import { Context } from '../../App';
 import './formComponent.css';
 import React, { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
 import { changeForm } from '../../store/formSlice';
-import { RootState } from '../../store/store';
 import { FormStateData, FormData } from 'types';
+import { useAppDispatch, useAppSelector } from '../../hook';
 
 function FormComponent() {
   const { themesState } = useContext(Context);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const formState: FormStateData[] = useSelector((state: RootState) => state.formState.data);
+  const formState = useAppSelector((state) => state.formState.data);
   const changeFormState = (data: FormStateData[]) => {
     dispatch(changeForm(data));
   };
