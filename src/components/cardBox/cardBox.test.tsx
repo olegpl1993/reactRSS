@@ -2,6 +2,8 @@ import { render, screen } from '@testing-library/react';
 import React from 'react';
 import CardBox from './cardBox';
 import { Photo } from 'types';
+import { Provider } from 'react-redux';
+import { configureStore, createSlice } from '@reduxjs/toolkit';
 
 const photoArr: Photo[] = [
   {
@@ -19,12 +21,32 @@ const photoArr: Photo[] = [
     width_l: 1024,
   },
 ];
-
-const isNotFind = false;
+const photoSlice = createSlice({
+  name: 'photo',
+  initialState: {
+    photoArr: photoArr as Photo[],
+    isNotFind: false,
+    isLoading: false,
+  },
+  reducers: {
+    changeState(state, action) {
+      state = action.payload;
+    },
+  },
+});
+const store = configureStore({
+  reducer: {
+    photoState: photoSlice.reducer,
+  },
+});
 
 describe('CardBox', () => {
   it('Rendering CardBox', () => {
-    render(<CardBox photoArr={photoArr} isNotFind={isNotFind} />);
+    render(
+      <Provider store={store}>
+        <CardBox />
+      </Provider>
+    );
     expect(screen.getByAltText('img')).toBeInTheDocument();
   });
 });

@@ -26,6 +26,9 @@ const photoSlice = createSlice({
     changeFindStatus(state, action: PayloadAction<boolean>) {
       state.isNotFind = action.payload;
     },
+    changeLoadingStatus(state, action: PayloadAction<boolean>) {
+      state.isLoading = action.payload;
+    },
   },
 
   extraReducers: (builder) => {
@@ -47,5 +50,5 @@ const photoSlice = createSlice({
   },
 });
 
-export const { changePhotoArr, changeFindStatus } = photoSlice.actions;
+export const { changePhotoArr, changeFindStatus, changeLoadingStatus } = photoSlice.actions;
 export default photoSlice.reducer;
