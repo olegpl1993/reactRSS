@@ -16,7 +16,7 @@ const photoSlice = createSlice({
   initialState: {
     photoArr: [] as Photo[],
     isNotFind: false,
-    isLoading: false,
+    isLoading: true,
   },
 
   reducers: {

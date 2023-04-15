@@ -6,7 +6,6 @@ import { useAppSelector } from '../../hook';
 
 function CardBox() {
   const { photoArr, isNotFind, isLoading } = useAppSelector((state) => state.photoState);
-  console.log('photoArr: ', photoArr);
 
   if (isNotFind) {
     return <div className="cardBox">Images not found</div>;
