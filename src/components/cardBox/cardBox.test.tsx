@@ -40,6 +40,25 @@ const store = configureStore({
   },
 });
 
+const photoSlice1 = createSlice({
+  name: 'photo',
+  initialState: {
+    photoArr: [] as Photo[],
+    isNotFind: true,
+    isLoading: false,
+  },
+  reducers: {
+    changeState(state, action) {
+      state = action.payload;
+    },
+  },
+});
+const emptyStore = configureStore({
+  reducer: {
+    photoState: photoSlice1.reducer,
+  },
+});
+
 describe('CardBox', () => {
   it('Rendering CardBox', () => {
     render(
@@ -48,5 +67,13 @@ describe('CardBox', () => {
       </Provider>
     );
     expect(screen.getByAltText('img')).toBeInTheDocument();
+  });
+  it('Is not find img', () => {
+    render(
+      <Provider store={emptyStore}>
+        <CardBox />
+      </Provider>
+    );
+    expect(screen.getByText(/Images not found/i)).toBeInTheDocument();
   });
 });
