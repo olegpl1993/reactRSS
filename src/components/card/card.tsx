@@ -1,7 +1,7 @@
 import { Context } from '../../App';
 import './card.css';
 import React, { useContext, useState } from 'react';
-import { Photo } from 'types';
+import { Photo } from '../../types';
 import Modal from '../../components/modal/modal';
 
 interface Props {

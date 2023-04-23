@@ -1,7 +1,7 @@
 import { Context } from '../../App';
 import './formCard.css';
 import React, { useContext } from 'react';
-import { FormStateData } from 'types';
+import { FormStateData } from '../../types';
 
 interface Props {
   formStateData: FormStateData;

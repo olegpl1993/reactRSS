@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ApiResponse, Photo } from 'types';
+import { ApiResponse, Photo } from '../types';
 
 export const fetchPhoto = createAsyncThunk<ApiResponse, string>(
   'photo/fetchPhoto',

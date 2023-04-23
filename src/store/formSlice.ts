@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { FormStateData } from 'types';
+import { FormStateData } from '../types';
 
 const formSlice = createSlice({
   name: 'formState',

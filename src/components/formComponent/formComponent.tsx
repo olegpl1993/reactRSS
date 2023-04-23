@@ -3,7 +3,7 @@ import './formComponent.css';
 import React, { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { changeForm } from '../../store/formSlice';
-import { FormStateData, FormData } from 'types';
+import { FormStateData, FormData } from '../../types';
 import { useAppDispatch, useAppSelector } from '../../hook';
 
 function FormComponent() {
