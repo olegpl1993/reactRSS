@@ -12,11 +12,19 @@ function Header() {
 
   return (
     <div className="header">
-      <div className="page">{pageState} page</div>
+      <div className="page" data-testid="page">
+        {pageState} page
+      </div>
       <nav className="navigation">
-        <Link to="/">Main</Link>
-        <Link to="/aboutUs">About Us</Link>
-        <Link to="/forms">Forms</Link>
+        <Link to="/" className="mainLink">
+          Main
+        </Link>
+        <Link to="/aboutUs" className="aboutLink">
+          About Us
+        </Link>
+        <Link to="/forms" className="formsLink">
+          Forms
+        </Link>
       </nav>
       <button className={`themesBTN ${themesState}`} onClick={handleChangeThemes}>
         Change themes

@@ -32,6 +32,7 @@ function FormSearchInput() {
   return (
     <form className="formSearchRow" onSubmit={(e) => handleRequest(e)}>
       <input
+        className="searchbar"
         type="search"
         placeholder={'search'}
         value={searchState}

@@ -11,7 +11,7 @@
     "preview": "cross-env NODE_ENV=production node server",
     "lint": "eslint ./src --fix",
     "cy:run": "nyc cypress run",
-    "e2etest": "start-server-and-test start http://localhost:5173 cy:run && npx nyc report --reporter=text-summary",
+    "e2etest": "start-server-and-test start http://localhost:5173 cy:run && npx nyc report && npx nyc report --reporter=text-summary",
     "unittest": "vitest --coverage"
   },
   "dependencies": {
