@@ -18,5 +18,7 @@ describe('Main Page', () => {
   it('render cardBox', () => {
     cy.visit('/');
     cy.get('.cardBox').should('be.visible');
+    cy.get('.card').should('be.visible');
+    cy.get('.img').should('be.visible');
   });
 });
