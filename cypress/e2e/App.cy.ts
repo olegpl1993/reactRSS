@@ -21,4 +21,8 @@ describe('Main Page', () => {
     cy.get('.card').should('be.visible');
     cy.get('.img').should('be.visible');
   });
+
+  afterEach(() => {
+    cy.window().trigger('unload');
+  });
 });
