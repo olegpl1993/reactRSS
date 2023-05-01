@@ -1,0 +1,92 @@
+{
+  "name": "react-ssr",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "ts-node server.ts",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "vite build --ssrManifest --outDir dist/client",
+    "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
+    "preview": "cross-env NODE_ENV=production node server",
+    "lint": "eslint ./src --fix",
+    "cy:run": "nyc cypress run",
+    "e2etest": "start-server-and-test start http://localhost:5173 cy:run && npx nyc report && npx nyc report --reporter=text-summary",
+    "unittest": "vitest --coverage",
+    "test": "npm run e2etest && npm run unittest"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.0",
+    "compression": "^1.7.4",
+    "eslint": "^8.38.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-import-resolver-typescript": "^3.5.5",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "express": "^4.18.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.1",
+    "npm": "^9.6.4",
+    "prettier": "^2.8.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.9",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.10.0",
+    "sirv": "^2.0.2",
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "@cypress/code-coverage": "^3.10.4",
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
+    "@testing-library/dom": "^9.2.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/compression": "^1.7.2",
+    "@types/cypress__code-coverage": "^3.10.0",
+    "@types/express": "^4.17.16",
+    "@types/node": "^18.11.12",
+    "@types/react": "^18.0.37",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
+    "@vitest/coverage-c8": "^0.30.1",
+    "babel-plugin-istanbul": "^6.1.1",
+    "codecov": "^3.8.3",
+    "cross-env": "^7.0.3",
+    "cypress": "^12.10.0",
+    "install": "^0.13.0",
+    "jsdom": "^21.1.1",
+    "nyc": "^15.1.0",
+    "start-server-and-test": "^2.0.0",
+    "typescript": "^4.9.4",
+    "vite": "^4.0.4",
+    "vite-plugin-istanbul": "^4.0.1",
+    "vitest": "^0.30.1"
+  },
+  "nyc": {
+    "extends": "@istanbuljs/nyc-config-typescript",
+    "extension": [
+      ".tsx"
+    ],
+    "include": [
+      "src/**/*.tsx"
+    ],
+    "exclude": [
+      "cypress/",
+      "node_modules/",
+      "assets/",
+      "dist/",
+      "src/tests/"
+    ],
+    "reporter": [
+      "html"
+    ],
+    "report-dir": "coverage",
+    "all": true
+  }
+}
